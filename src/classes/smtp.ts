@@ -4,6 +4,8 @@ import { IResponseSuccess, ResponseSuccess } from "../util/response_success";
 import { IResponseError, ResponseError } from "../util/response_error";
 import { IMAP } from "./imap";
 
+import { default as User, UserModel } from "../models/User";
+
 interface ISMTP {
     transporter: Transporter;
     verify(): Promise<IResponseSuccess | IResponseError>;
@@ -17,6 +19,13 @@ export class SMTP {
     constructor(config: Transport) {
         this.transporter = createTransport(config);
     }
+
+    /*public firstVerify(): Promise<IResponseSuccess | IResponseError> {
+        return this.transporter.verify()
+        .then(() => {
+
+        })
+    } */
 
     public verify(): Promise<IResponseSuccess | IResponseError> {
         return this.transporter.verify()
