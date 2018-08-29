@@ -2,6 +2,6 @@ export interface IResponseSuccess {
     ok: number;
 }
 
-export const ResponseSuccess: IResponseSuccess = {
+export const ResponseSuccess: Object = {
     ok: 1
 };
