@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import eol from "eol";
 import { Transporter, SendMailOptions } from "nodemailer";
 // { createTransport, TransportOptions, Transport, Transporter, SendMailOptions, SentMessageInfo } from "nodemailer";
 import MailComposer from "nodemailer/lib/mail-composer";
@@ -36,7 +37,6 @@ export class SMTP {
     }
 
     public copyToSentFolder(mail: SendMailOptions, Imap: IMAP): Promise<Object> {
-        console.log(mail.html);
         return new Promise((resolve, reject) => {
             new MailComposer(mail).compile().build((error, result) => {
                 if (error) {

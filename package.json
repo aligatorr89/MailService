@@ -8,9 +8,7 @@
     "build": "npm run build-ts && npm run tslint && npm run copy-static-assets",
     "serve": "node dist/uo_mail_service.js",
     "test": "jest --forceExit --coverage --verbose",
-
     "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\"",
-
     "watch-test": "npm run test -- --watchAll",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
@@ -34,6 +32,7 @@
     "compression": "^1.7.3",
     "connect-mongo": "^2.0.1",
     "dotenv": "^6.0.0",
+    "eol": "^0.9.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
