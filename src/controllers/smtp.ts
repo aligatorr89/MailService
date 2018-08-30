@@ -20,7 +20,7 @@ export const send = (req: Request, res: Response): Promise<Response> => {
 export const sendAndCopyToSentFolder = (req: Request, res: Response): Promise<Response> => {
     const Smtp = new SMTP(req.body.smtp);
     const Imap = new IMAP(req.body.imap);
-    req.body.mail.html = eol.lf(req.body.mail.html);
+    req.body.mail.html = eol.crlf(req.body.mail.html);
     return Smtp.send(req.body.mail)
     .then(() => Smtp.copyToSentFolder(req.body.mail, Imap))
     .then(re => res.send(re))
