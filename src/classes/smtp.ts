@@ -36,7 +36,7 @@ export class SMTP {
     }
 
     public copyToSentFolder(mail: SendMailOptions, Imap: IMAP): Promise<Object> {
-        console.log(mail.html)
+        console.log(mail.html);
         return new Promise((resolve, reject) => {
             new MailComposer(mail).compile().build((error, result) => {
                 if (error) {
