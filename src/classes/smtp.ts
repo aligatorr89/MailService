@@ -43,7 +43,10 @@ export class SMTP {
                 } else {
                     Imap.copyToSentFolder(result)
                     .then(() => resolve(ResponseSuccess))
-                    .catch(error => reject(ResponseError(error)));
+                    .catch(error => {
+                        console.log(error);
+                        reject(ResponseError(error));
+                    });
                 }
             });
         });
