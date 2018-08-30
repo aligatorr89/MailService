@@ -14,7 +14,7 @@ app.set("port", process.env.PORT || 8090);
 
 // MIDDLEWARES
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: "100mb"}));
 
 // auth
 app.use((req, res, next) => {
