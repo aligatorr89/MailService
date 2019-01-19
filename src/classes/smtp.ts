@@ -1,14 +1,12 @@
 import nodemailer from "nodemailer";
-import eol from "eol";
 import { Transporter, SendMailOptions } from "nodemailer";
 // { createTransport, TransportOptions, Transport, Transporter, SendMailOptions, SentMessageInfo } from "nodemailer";
 import MailComposer from "nodemailer/lib/mail-composer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
-import { IResponseSuccess, ResponseSuccess } from "../util/response_success";
-import { IResponseError, ResponseError } from "../util/response_error";
+import { ResponseSuccess } from "../util/response_success";
+import { ResponseError } from "../util/response_error";
 import { IMAP } from "./imap";
 
-// just for model, not implemented
 interface ISMTP {
     transporter: Transporter;
     verify(): Promise<Object>;
@@ -16,7 +14,7 @@ interface ISMTP {
     copyToSentFolder(mail: SendMailOptions, Imap: IMAP): Promise<Object>;
 }
 
-export class SMTP {
+export class SMTP implements ISMTP {
     public transporter: Transporter;
 
     constructor(config: SMTPTransport.Options) {
@@ -45,7 +43,6 @@ export class SMTP {
                     Imap.copyToSentFolder(result)
                     .then(() => resolve(ResponseSuccess))
                     .catch(error => {
-                        console.log(error);
                         reject(ResponseError(error));
                     });
                 }

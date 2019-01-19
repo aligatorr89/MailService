@@ -10,6 +10,8 @@ import * as imapController from "./controllers/imap";
 
 const app = express();
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 app.set("port", process.env.PORT || 8090);
 
 // MIDDLEWARES
